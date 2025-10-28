@@ -4,7 +4,7 @@
 // - protoc             v3.20.3
 // source: archiveInner.proto
 
-package archiveAPI
+package ass_grpc
 
 import (
 	context "context"
