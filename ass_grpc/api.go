@@ -209,3 +209,14 @@ func (a *ASSGrpcClient) ArchiveUserInfoByKey(key string) (*UserKey, error) {
 		Aid: int(resp.Aid),
 	}, nil
 }
+
+func (a *ASSGrpcClient) ArchiveIpForbid(bid, uid string) (*QueryIPForbidUserResp, error) {
+	resp, err := a.grpc.QueryIPForbidUser(ctx, &QueryIPForbidUserReq{
+		Bid: bid,
+		Uid: uid,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}

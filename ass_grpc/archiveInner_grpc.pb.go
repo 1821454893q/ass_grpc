@@ -29,6 +29,7 @@ type ArchiveInnerClient interface {
 	GetUserInfoDid(ctx context.Context, in *GetUserInfoDidReq, opts ...grpc.CallOption) (*GetUserInfoDidResp, error)
 	ModifyArchive(ctx context.Context, in *ModifyArchiveReq, opts ...grpc.CallOption) (*Empty, error)
 	GetUserInfoByKey(ctx context.Context, in *GetUserInfoByKeyReq, opts ...grpc.CallOption) (*GetUserInfoByKeyResp, error)
+	QueryIPForbidUser(ctx context.Context, in *QueryIPForbidUserReq, opts ...grpc.CallOption) (*QueryIPForbidUserResp, error)
 }
 
 type archiveInnerClient struct {
@@ -124,6 +125,15 @@ func (c *archiveInnerClient) GetUserInfoByKey(ctx context.Context, in *GetUserIn
 	return out, nil
 }
 
+func (c *archiveInnerClient) QueryIPForbidUser(ctx context.Context, in *QueryIPForbidUserReq, opts ...grpc.CallOption) (*QueryIPForbidUserResp, error) {
+	out := new(QueryIPForbidUserResp)
+	err := c.cc.Invoke(ctx, "/ArchiveInner/QueryIPForbidUser", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ArchiveInnerServer is the server API for ArchiveInner service.
 // All implementations must embed UnimplementedArchiveInnerServer
 // for forward compatibility
@@ -135,6 +145,7 @@ type ArchiveInnerServer interface {
 	GetUserInfoDid(context.Context, *GetUserInfoDidReq) (*GetUserInfoDidResp, error)
 	ModifyArchive(context.Context, *ModifyArchiveReq) (*Empty, error)
 	GetUserInfoByKey(context.Context, *GetUserInfoByKeyReq) (*GetUserInfoByKeyResp, error)
+	QueryIPForbidUser(context.Context, *QueryIPForbidUserReq) (*QueryIPForbidUserResp, error)
 	mustEmbedUnimplementedArchiveInnerServer()
 }
 
@@ -162,6 +173,9 @@ func (UnimplementedArchiveInnerServer) ModifyArchive(context.Context, *ModifyArc
 }
 func (UnimplementedArchiveInnerServer) GetUserInfoByKey(context.Context, *GetUserInfoByKeyReq) (*GetUserInfoByKeyResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserInfoByKey not implemented")
+}
+func (UnimplementedArchiveInnerServer) QueryIPForbidUser(context.Context, *QueryIPForbidUserReq) (*QueryIPForbidUserResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method QueryIPForbidUser not implemented")
 }
 func (UnimplementedArchiveInnerServer) mustEmbedUnimplementedArchiveInnerServer() {}
 
@@ -310,6 +324,24 @@ func _ArchiveInner_GetUserInfoByKey_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ArchiveInner_QueryIPForbidUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryIPForbidUserReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArchiveInnerServer).QueryIPForbidUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ArchiveInner/QueryIPForbidUser",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArchiveInnerServer).QueryIPForbidUser(ctx, req.(*QueryIPForbidUserReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ArchiveInner_ServiceDesc is the grpc.ServiceDesc for ArchiveInner service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -340,6 +372,10 @@ var ArchiveInner_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserInfoByKey",
 			Handler:    _ArchiveInner_GetUserInfoByKey_Handler,
+		},
+		{
+			MethodName: "QueryIPForbidUser",
+			Handler:    _ArchiveInner_QueryIPForbidUser_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
