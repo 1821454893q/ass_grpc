@@ -30,6 +30,8 @@ type ArchiveInnerClient interface {
 	ModifyArchive(ctx context.Context, in *ModifyArchiveReq, opts ...grpc.CallOption) (*Empty, error)
 	GetUserInfoByKey(ctx context.Context, in *GetUserInfoByKeyReq, opts ...grpc.CallOption) (*GetUserInfoByKeyResp, error)
 	QueryIPForbidUser(ctx context.Context, in *QueryIPForbidUserReq, opts ...grpc.CallOption) (*QueryIPForbidUserResp, error)
+	ClearArchive(ctx context.Context, in *ClearArchiveReq, opts ...grpc.CallOption) (*Empty, error)
+	DeleteArchive(ctx context.Context, in *DeleteArchiveReq, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type archiveInnerClient struct {
@@ -134,6 +136,24 @@ func (c *archiveInnerClient) QueryIPForbidUser(ctx context.Context, in *QueryIPF
 	return out, nil
 }
 
+func (c *archiveInnerClient) ClearArchive(ctx context.Context, in *ClearArchiveReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/ArchiveInner/ClearArchive", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *archiveInnerClient) DeleteArchive(ctx context.Context, in *DeleteArchiveReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/ArchiveInner/DeleteArchive", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ArchiveInnerServer is the server API for ArchiveInner service.
 // All implementations must embed UnimplementedArchiveInnerServer
 // for forward compatibility
@@ -146,6 +166,8 @@ type ArchiveInnerServer interface {
 	ModifyArchive(context.Context, *ModifyArchiveReq) (*Empty, error)
 	GetUserInfoByKey(context.Context, *GetUserInfoByKeyReq) (*GetUserInfoByKeyResp, error)
 	QueryIPForbidUser(context.Context, *QueryIPForbidUserReq) (*QueryIPForbidUserResp, error)
+	ClearArchive(context.Context, *ClearArchiveReq) (*Empty, error)
+	DeleteArchive(context.Context, *DeleteArchiveReq) (*Empty, error)
 	mustEmbedUnimplementedArchiveInnerServer()
 }
 
@@ -176,6 +198,12 @@ func (UnimplementedArchiveInnerServer) GetUserInfoByKey(context.Context, *GetUse
 }
 func (UnimplementedArchiveInnerServer) QueryIPForbidUser(context.Context, *QueryIPForbidUserReq) (*QueryIPForbidUserResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueryIPForbidUser not implemented")
+}
+func (UnimplementedArchiveInnerServer) ClearArchive(context.Context, *ClearArchiveReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ClearArchive not implemented")
+}
+func (UnimplementedArchiveInnerServer) DeleteArchive(context.Context, *DeleteArchiveReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteArchive not implemented")
 }
 func (UnimplementedArchiveInnerServer) mustEmbedUnimplementedArchiveInnerServer() {}
 
@@ -342,6 +370,42 @@ func _ArchiveInner_QueryIPForbidUser_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ArchiveInner_ClearArchive_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ClearArchiveReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArchiveInnerServer).ClearArchive(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ArchiveInner/ClearArchive",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArchiveInnerServer).ClearArchive(ctx, req.(*ClearArchiveReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ArchiveInner_DeleteArchive_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteArchiveReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArchiveInnerServer).DeleteArchive(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ArchiveInner/DeleteArchive",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArchiveInnerServer).DeleteArchive(ctx, req.(*DeleteArchiveReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ArchiveInner_ServiceDesc is the grpc.ServiceDesc for ArchiveInner service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -376,6 +440,14 @@ var ArchiveInner_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "QueryIPForbidUser",
 			Handler:    _ArchiveInner_QueryIPForbidUser_Handler,
+		},
+		{
+			MethodName: "ClearArchive",
+			Handler:    _ArchiveInner_ClearArchive_Handler,
+		},
+		{
+			MethodName: "DeleteArchive",
+			Handler:    _ArchiveInner_DeleteArchive_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

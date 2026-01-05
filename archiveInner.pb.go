@@ -127,6 +127,154 @@ func (*Empty) Descriptor() ([]byte, []int) {
 	return file_archiveInner_proto_rawDescGZIP(), []int{0}
 }
 
+type BaseInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Bid           string                 `protobuf:"bytes,1,opt,name=bid,proto3" json:"bid,omitempty"`  // 业务标识
+	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`  // 存档uid
+	Aid           int32                  `protobuf:"varint,3,opt,name=aid,proto3" json:"aid,omitempty"` // 存档aid
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BaseInfo) Reset() {
+	*x = BaseInfo{}
+	mi := &file_archiveInner_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BaseInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BaseInfo) ProtoMessage() {}
+
+func (x *BaseInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_archiveInner_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BaseInfo.ProtoReflect.Descriptor instead.
+func (*BaseInfo) Descriptor() ([]byte, []int) {
+	return file_archiveInner_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *BaseInfo) GetBid() string {
+	if x != nil {
+		return x.Bid
+	}
+	return ""
+}
+
+func (x *BaseInfo) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *BaseInfo) GetAid() int32 {
+	if x != nil {
+		return x.Aid
+	}
+	return 0
+}
+
+type DeleteArchiveReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserInfo      *BaseInfo              `protobuf:"bytes,1,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteArchiveReq) Reset() {
+	*x = DeleteArchiveReq{}
+	mi := &file_archiveInner_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteArchiveReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteArchiveReq) ProtoMessage() {}
+
+func (x *DeleteArchiveReq) ProtoReflect() protoreflect.Message {
+	mi := &file_archiveInner_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteArchiveReq.ProtoReflect.Descriptor instead.
+func (*DeleteArchiveReq) Descriptor() ([]byte, []int) {
+	return file_archiveInner_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeleteArchiveReq) GetUserInfo() *BaseInfo {
+	if x != nil {
+		return x.UserInfo
+	}
+	return nil
+}
+
+type ClearArchiveReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserInfo      *BaseInfo              `protobuf:"bytes,1,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ClearArchiveReq) Reset() {
+	*x = ClearArchiveReq{}
+	mi := &file_archiveInner_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ClearArchiveReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ClearArchiveReq) ProtoMessage() {}
+
+func (x *ClearArchiveReq) ProtoReflect() protoreflect.Message {
+	mi := &file_archiveInner_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ClearArchiveReq.ProtoReflect.Descriptor instead.
+func (*ClearArchiveReq) Descriptor() ([]byte, []int) {
+	return file_archiveInner_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ClearArchiveReq) GetUserInfo() *BaseInfo {
+	if x != nil {
+		return x.UserInfo
+	}
+	return nil
+}
+
 type QueryIPForbidUserReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Bid           string                 `protobuf:"bytes,1,opt,name=bid,proto3" json:"bid,omitempty"` // 业务标识
@@ -137,7 +285,7 @@ type QueryIPForbidUserReq struct {
 
 func (x *QueryIPForbidUserReq) Reset() {
 	*x = QueryIPForbidUserReq{}
-	mi := &file_archiveInner_proto_msgTypes[1]
+	mi := &file_archiveInner_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -149,7 +297,7 @@ func (x *QueryIPForbidUserReq) String() string {
 func (*QueryIPForbidUserReq) ProtoMessage() {}
 
 func (x *QueryIPForbidUserReq) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[1]
+	mi := &file_archiveInner_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -162,7 +310,7 @@ func (x *QueryIPForbidUserReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QueryIPForbidUserReq.ProtoReflect.Descriptor instead.
 func (*QueryIPForbidUserReq) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{1}
+	return file_archiveInner_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *QueryIPForbidUserReq) GetBid() string {
@@ -188,7 +336,7 @@ type QueryIPForbidUserResp struct {
 
 func (x *QueryIPForbidUserResp) Reset() {
 	*x = QueryIPForbidUserResp{}
-	mi := &file_archiveInner_proto_msgTypes[2]
+	mi := &file_archiveInner_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -200,7 +348,7 @@ func (x *QueryIPForbidUserResp) String() string {
 func (*QueryIPForbidUserResp) ProtoMessage() {}
 
 func (x *QueryIPForbidUserResp) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[2]
+	mi := &file_archiveInner_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -213,7 +361,7 @@ func (x *QueryIPForbidUserResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QueryIPForbidUserResp.ProtoReflect.Descriptor instead.
 func (*QueryIPForbidUserResp) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{2}
+	return file_archiveInner_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *QueryIPForbidUserResp) GetLists() []*IPForbidUserInfo {
@@ -235,7 +383,7 @@ type IPForbidUserInfo struct {
 
 func (x *IPForbidUserInfo) Reset() {
 	*x = IPForbidUserInfo{}
-	mi := &file_archiveInner_proto_msgTypes[3]
+	mi := &file_archiveInner_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -247,7 +395,7 @@ func (x *IPForbidUserInfo) String() string {
 func (*IPForbidUserInfo) ProtoMessage() {}
 
 func (x *IPForbidUserInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[3]
+	mi := &file_archiveInner_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -260,7 +408,7 @@ func (x *IPForbidUserInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IPForbidUserInfo.ProtoReflect.Descriptor instead.
 func (*IPForbidUserInfo) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{3}
+	return file_archiveInner_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *IPForbidUserInfo) GetBid() string {
@@ -303,7 +451,7 @@ type DisAbnormalReq struct {
 
 func (x *DisAbnormalReq) Reset() {
 	*x = DisAbnormalReq{}
-	mi := &file_archiveInner_proto_msgTypes[4]
+	mi := &file_archiveInner_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -315,7 +463,7 @@ func (x *DisAbnormalReq) String() string {
 func (*DisAbnormalReq) ProtoMessage() {}
 
 func (x *DisAbnormalReq) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[4]
+	mi := &file_archiveInner_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -328,7 +476,7 @@ func (x *DisAbnormalReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisAbnormalReq.ProtoReflect.Descriptor instead.
 func (*DisAbnormalReq) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{4}
+	return file_archiveInner_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *DisAbnormalReq) GetBid() string {
@@ -371,7 +519,7 @@ type WebDestroyReq struct {
 
 func (x *WebDestroyReq) Reset() {
 	*x = WebDestroyReq{}
-	mi := &file_archiveInner_proto_msgTypes[5]
+	mi := &file_archiveInner_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -383,7 +531,7 @@ func (x *WebDestroyReq) String() string {
 func (*WebDestroyReq) ProtoMessage() {}
 
 func (x *WebDestroyReq) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[5]
+	mi := &file_archiveInner_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -396,7 +544,7 @@ func (x *WebDestroyReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WebDestroyReq.ProtoReflect.Descriptor instead.
 func (*WebDestroyReq) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{5}
+	return file_archiveInner_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *WebDestroyReq) GetBid() string {
@@ -439,7 +587,7 @@ type BatchAbnuserReq struct {
 
 func (x *BatchAbnuserReq) Reset() {
 	*x = BatchAbnuserReq{}
-	mi := &file_archiveInner_proto_msgTypes[6]
+	mi := &file_archiveInner_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -451,7 +599,7 @@ func (x *BatchAbnuserReq) String() string {
 func (*BatchAbnuserReq) ProtoMessage() {}
 
 func (x *BatchAbnuserReq) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[6]
+	mi := &file_archiveInner_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -464,7 +612,7 @@ func (x *BatchAbnuserReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchAbnuserReq.ProtoReflect.Descriptor instead.
 func (*BatchAbnuserReq) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{6}
+	return file_archiveInner_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *BatchAbnuserReq) GetBid() string {
@@ -504,7 +652,7 @@ type BatchAbnuserResp struct {
 
 func (x *BatchAbnuserResp) Reset() {
 	*x = BatchAbnuserResp{}
-	mi := &file_archiveInner_proto_msgTypes[7]
+	mi := &file_archiveInner_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -516,7 +664,7 @@ func (x *BatchAbnuserResp) String() string {
 func (*BatchAbnuserResp) ProtoMessage() {}
 
 func (x *BatchAbnuserResp) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[7]
+	mi := &file_archiveInner_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -529,7 +677,7 @@ func (x *BatchAbnuserResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchAbnuserResp.ProtoReflect.Descriptor instead.
 func (*BatchAbnuserResp) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{7}
+	return file_archiveInner_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *BatchAbnuserResp) GetCode() Code {
@@ -549,7 +697,7 @@ type GetUserInfoReq struct {
 
 func (x *GetUserInfoReq) Reset() {
 	*x = GetUserInfoReq{}
-	mi := &file_archiveInner_proto_msgTypes[8]
+	mi := &file_archiveInner_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -561,7 +709,7 @@ func (x *GetUserInfoReq) String() string {
 func (*GetUserInfoReq) ProtoMessage() {}
 
 func (x *GetUserInfoReq) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[8]
+	mi := &file_archiveInner_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -574,7 +722,7 @@ func (x *GetUserInfoReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfoReq.ProtoReflect.Descriptor instead.
 func (*GetUserInfoReq) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{8}
+	return file_archiveInner_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetUserInfoReq) GetBid() string {
@@ -601,7 +749,7 @@ type UserSocialInfo struct {
 
 func (x *UserSocialInfo) Reset() {
 	*x = UserSocialInfo{}
-	mi := &file_archiveInner_proto_msgTypes[9]
+	mi := &file_archiveInner_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -613,7 +761,7 @@ func (x *UserSocialInfo) String() string {
 func (*UserSocialInfo) ProtoMessage() {}
 
 func (x *UserSocialInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[9]
+	mi := &file_archiveInner_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -626,7 +774,7 @@ func (x *UserSocialInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserSocialInfo.ProtoReflect.Descriptor instead.
 func (*UserSocialInfo) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{9}
+	return file_archiveInner_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *UserSocialInfo) GetSid() string {
@@ -655,7 +803,7 @@ type GetUserInfoResp struct {
 
 func (x *GetUserInfoResp) Reset() {
 	*x = GetUserInfoResp{}
-	mi := &file_archiveInner_proto_msgTypes[10]
+	mi := &file_archiveInner_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -667,7 +815,7 @@ func (x *GetUserInfoResp) String() string {
 func (*GetUserInfoResp) ProtoMessage() {}
 
 func (x *GetUserInfoResp) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[10]
+	mi := &file_archiveInner_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -680,7 +828,7 @@ func (x *GetUserInfoResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfoResp.ProtoReflect.Descriptor instead.
 func (*GetUserInfoResp) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{10}
+	return file_archiveInner_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetUserInfoResp) GetUid() string {
@@ -721,7 +869,7 @@ type GetUserInfoDidReq struct {
 
 func (x *GetUserInfoDidReq) Reset() {
 	*x = GetUserInfoDidReq{}
-	mi := &file_archiveInner_proto_msgTypes[11]
+	mi := &file_archiveInner_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -733,7 +881,7 @@ func (x *GetUserInfoDidReq) String() string {
 func (*GetUserInfoDidReq) ProtoMessage() {}
 
 func (x *GetUserInfoDidReq) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[11]
+	mi := &file_archiveInner_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -746,7 +894,7 @@ func (x *GetUserInfoDidReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfoDidReq.ProtoReflect.Descriptor instead.
 func (*GetUserInfoDidReq) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{11}
+	return file_archiveInner_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetUserInfoDidReq) GetBid() string {
@@ -775,7 +923,7 @@ type GetUserInfoDidResp struct {
 
 func (x *GetUserInfoDidResp) Reset() {
 	*x = GetUserInfoDidResp{}
-	mi := &file_archiveInner_proto_msgTypes[12]
+	mi := &file_archiveInner_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -787,7 +935,7 @@ func (x *GetUserInfoDidResp) String() string {
 func (*GetUserInfoDidResp) ProtoMessage() {}
 
 func (x *GetUserInfoDidResp) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[12]
+	mi := &file_archiveInner_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -800,7 +948,7 @@ func (x *GetUserInfoDidResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfoDidResp.ProtoReflect.Descriptor instead.
 func (*GetUserInfoDidResp) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{12}
+	return file_archiveInner_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetUserInfoDidResp) GetUid() string {
@@ -844,7 +992,7 @@ type ModifyArchiveReq struct {
 
 func (x *ModifyArchiveReq) Reset() {
 	*x = ModifyArchiveReq{}
-	mi := &file_archiveInner_proto_msgTypes[13]
+	mi := &file_archiveInner_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -856,7 +1004,7 @@ func (x *ModifyArchiveReq) String() string {
 func (*ModifyArchiveReq) ProtoMessage() {}
 
 func (x *ModifyArchiveReq) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[13]
+	mi := &file_archiveInner_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -869,7 +1017,7 @@ func (x *ModifyArchiveReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModifyArchiveReq.ProtoReflect.Descriptor instead.
 func (*ModifyArchiveReq) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{13}
+	return file_archiveInner_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ModifyArchiveReq) GetBid() string {
@@ -916,7 +1064,7 @@ type GetUserInfoByKeyReq struct {
 
 func (x *GetUserInfoByKeyReq) Reset() {
 	*x = GetUserInfoByKeyReq{}
-	mi := &file_archiveInner_proto_msgTypes[14]
+	mi := &file_archiveInner_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -928,7 +1076,7 @@ func (x *GetUserInfoByKeyReq) String() string {
 func (*GetUserInfoByKeyReq) ProtoMessage() {}
 
 func (x *GetUserInfoByKeyReq) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[14]
+	mi := &file_archiveInner_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -941,7 +1089,7 @@ func (x *GetUserInfoByKeyReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfoByKeyReq.ProtoReflect.Descriptor instead.
 func (*GetUserInfoByKeyReq) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{14}
+	return file_archiveInner_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetUserInfoByKeyReq) GetKey() string {
@@ -962,7 +1110,7 @@ type GetUserInfoByKeyResp struct {
 
 func (x *GetUserInfoByKeyResp) Reset() {
 	*x = GetUserInfoByKeyResp{}
-	mi := &file_archiveInner_proto_msgTypes[15]
+	mi := &file_archiveInner_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -974,7 +1122,7 @@ func (x *GetUserInfoByKeyResp) String() string {
 func (*GetUserInfoByKeyResp) ProtoMessage() {}
 
 func (x *GetUserInfoByKeyResp) ProtoReflect() protoreflect.Message {
-	mi := &file_archiveInner_proto_msgTypes[15]
+	mi := &file_archiveInner_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -987,7 +1135,7 @@ func (x *GetUserInfoByKeyResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfoByKeyResp.ProtoReflect.Descriptor instead.
 func (*GetUserInfoByKeyResp) Descriptor() ([]byte, []int) {
-	return file_archiveInner_proto_rawDescGZIP(), []int{15}
+	return file_archiveInner_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetUserInfoByKeyResp) GetBid() string {
@@ -1016,7 +1164,15 @@ var File_archiveInner_proto protoreflect.FileDescriptor
 const file_archiveInner_proto_rawDesc = "" +
 	"\n" +
 	"\x12archiveInner.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\a\n" +
-	"\x05Empty\":\n" +
+	"\x05Empty\"@\n" +
+	"\bBaseInfo\x12\x10\n" +
+	"\x03bid\x18\x01 \x01(\tR\x03bid\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\tR\x03uid\x12\x10\n" +
+	"\x03aid\x18\x03 \x01(\x05R\x03aid\":\n" +
+	"\x10DeleteArchiveReq\x12&\n" +
+	"\tuser_info\x18\x01 \x01(\v2\t.BaseInfoR\buserInfo\"9\n" +
+	"\x0fClearArchiveReq\x12&\n" +
+	"\tuser_info\x18\x01 \x01(\v2\t.BaseInfoR\buserInfo\":\n" +
 	"\x14QueryIPForbidUserReq\x12\x10\n" +
 	"\x03bid\x18\x01 \x01(\tR\x03bid\x12\x10\n" +
 	"\x03uid\x18\x02 \x01(\tR\x03uid\"@\n" +
@@ -1084,7 +1240,7 @@ const file_archiveInner_proto_rawDesc = "" +
 	"\x19DisAbnormalNotAbnormalErr\x10\xe9\a\x12\x1d\n" +
 	"\x18WebDestroyCodeExpiredErr\x10\xcd\b\x12\x16\n" +
 	"\x11WebDestroyCodeErr\x10\xce\b\x12\x1e\n" +
-	"\x19WebDestroyCodeNotFoundErr\x10\xcf\b2\xc3\x03\n" +
+	"\x19WebDestroyCodeNotFoundErr\x10\xcf\b2\x9d\x04\n" +
 	"\fArchiveInner\x12(\n" +
 	"\vDisAbnormal\x12\x0f.DisAbnormalReq\x1a\x06.Empty\"\x00\x12&\n" +
 	"\n" +
@@ -1094,7 +1250,9 @@ const file_archiveInner_proto_rawDesc = "" +
 	"\x0eGetUserInfoDid\x12\x12.GetUserInfoDidReq\x1a\x13.GetUserInfoDidResp\"\x00\x12,\n" +
 	"\rModifyArchive\x12\x11.ModifyArchiveReq\x1a\x06.Empty\"\x00\x12A\n" +
 	"\x10GetUserInfoByKey\x12\x14.GetUserInfoByKeyReq\x1a\x15.GetUserInfoByKeyResp\"\x00\x12D\n" +
-	"\x11QueryIPForbidUser\x12\x15.QueryIPForbidUserReq\x1a\x16.QueryIPForbidUserResp\"\x00B\x0eZ\f./archiveAPIb\x06proto3"
+	"\x11QueryIPForbidUser\x12\x15.QueryIPForbidUserReq\x1a\x16.QueryIPForbidUserResp\"\x00\x12*\n" +
+	"\fClearArchive\x12\x10.ClearArchiveReq\x1a\x06.Empty\"\x00\x12,\n" +
+	"\rDeleteArchive\x12\x11.DeleteArchiveReq\x1a\x06.Empty\"\x00B\x03Z\x01.b\x06proto3"
 
 var (
 	file_archiveInner_proto_rawDescOnce sync.Once
@@ -1109,54 +1267,63 @@ func file_archiveInner_proto_rawDescGZIP() []byte {
 }
 
 var file_archiveInner_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_archiveInner_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_archiveInner_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_archiveInner_proto_goTypes = []any{
 	(Code)(0),                     // 0: Code
 	(*Empty)(nil),                 // 1: Empty
-	(*QueryIPForbidUserReq)(nil),  // 2: QueryIPForbidUserReq
-	(*QueryIPForbidUserResp)(nil), // 3: QueryIPForbidUserResp
-	(*IPForbidUserInfo)(nil),      // 4: IPForbidUserInfo
-	(*DisAbnormalReq)(nil),        // 5: DisAbnormalReq
-	(*WebDestroyReq)(nil),         // 6: WebDestroyReq
-	(*BatchAbnuserReq)(nil),       // 7: BatchAbnuserReq
-	(*BatchAbnuserResp)(nil),      // 8: BatchAbnuserResp
-	(*GetUserInfoReq)(nil),        // 9: GetUserInfoReq
-	(*UserSocialInfo)(nil),        // 10: UserSocialInfo
-	(*GetUserInfoResp)(nil),       // 11: GetUserInfoResp
-	(*GetUserInfoDidReq)(nil),     // 12: GetUserInfoDidReq
-	(*GetUserInfoDidResp)(nil),    // 13: GetUserInfoDidResp
-	(*ModifyArchiveReq)(nil),      // 14: ModifyArchiveReq
-	(*GetUserInfoByKeyReq)(nil),   // 15: GetUserInfoByKeyReq
-	(*GetUserInfoByKeyResp)(nil),  // 16: GetUserInfoByKeyResp
-	(*timestamppb.Timestamp)(nil), // 17: google.protobuf.Timestamp
+	(*BaseInfo)(nil),              // 2: BaseInfo
+	(*DeleteArchiveReq)(nil),      // 3: DeleteArchiveReq
+	(*ClearArchiveReq)(nil),       // 4: ClearArchiveReq
+	(*QueryIPForbidUserReq)(nil),  // 5: QueryIPForbidUserReq
+	(*QueryIPForbidUserResp)(nil), // 6: QueryIPForbidUserResp
+	(*IPForbidUserInfo)(nil),      // 7: IPForbidUserInfo
+	(*DisAbnormalReq)(nil),        // 8: DisAbnormalReq
+	(*WebDestroyReq)(nil),         // 9: WebDestroyReq
+	(*BatchAbnuserReq)(nil),       // 10: BatchAbnuserReq
+	(*BatchAbnuserResp)(nil),      // 11: BatchAbnuserResp
+	(*GetUserInfoReq)(nil),        // 12: GetUserInfoReq
+	(*UserSocialInfo)(nil),        // 13: UserSocialInfo
+	(*GetUserInfoResp)(nil),       // 14: GetUserInfoResp
+	(*GetUserInfoDidReq)(nil),     // 15: GetUserInfoDidReq
+	(*GetUserInfoDidResp)(nil),    // 16: GetUserInfoDidResp
+	(*ModifyArchiveReq)(nil),      // 17: ModifyArchiveReq
+	(*GetUserInfoByKeyReq)(nil),   // 18: GetUserInfoByKeyReq
+	(*GetUserInfoByKeyResp)(nil),  // 19: GetUserInfoByKeyResp
+	(*timestamppb.Timestamp)(nil), // 20: google.protobuf.Timestamp
 }
 var file_archiveInner_proto_depIdxs = []int32{
-	4,  // 0: QueryIPForbidUserResp.lists:type_name -> IPForbidUserInfo
-	17, // 1: IPForbidUserInfo.time:type_name -> google.protobuf.Timestamp
-	0,  // 2: BatchAbnuserResp.code:type_name -> Code
-	10, // 3: GetUserInfoResp.list:type_name -> UserSocialInfo
-	10, // 4: GetUserInfoDidResp.list:type_name -> UserSocialInfo
-	5,  // 5: ArchiveInner.DisAbnormal:input_type -> DisAbnormalReq
-	6,  // 6: ArchiveInner.WebDestroy:input_type -> WebDestroyReq
-	7,  // 7: ArchiveInner.BatchAbnuser:input_type -> BatchAbnuserReq
-	9,  // 8: ArchiveInner.GetUserInfo:input_type -> GetUserInfoReq
-	12, // 9: ArchiveInner.GetUserInfoDid:input_type -> GetUserInfoDidReq
-	14, // 10: ArchiveInner.ModifyArchive:input_type -> ModifyArchiveReq
-	15, // 11: ArchiveInner.GetUserInfoByKey:input_type -> GetUserInfoByKeyReq
-	2,  // 12: ArchiveInner.QueryIPForbidUser:input_type -> QueryIPForbidUserReq
-	1,  // 13: ArchiveInner.DisAbnormal:output_type -> Empty
-	1,  // 14: ArchiveInner.WebDestroy:output_type -> Empty
-	8,  // 15: ArchiveInner.BatchAbnuser:output_type -> BatchAbnuserResp
-	11, // 16: ArchiveInner.GetUserInfo:output_type -> GetUserInfoResp
-	13, // 17: ArchiveInner.GetUserInfoDid:output_type -> GetUserInfoDidResp
-	1,  // 18: ArchiveInner.ModifyArchive:output_type -> Empty
-	16, // 19: ArchiveInner.GetUserInfoByKey:output_type -> GetUserInfoByKeyResp
-	3,  // 20: ArchiveInner.QueryIPForbidUser:output_type -> QueryIPForbidUserResp
-	13, // [13:21] is the sub-list for method output_type
-	5,  // [5:13] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	2,  // 0: DeleteArchiveReq.user_info:type_name -> BaseInfo
+	2,  // 1: ClearArchiveReq.user_info:type_name -> BaseInfo
+	7,  // 2: QueryIPForbidUserResp.lists:type_name -> IPForbidUserInfo
+	20, // 3: IPForbidUserInfo.time:type_name -> google.protobuf.Timestamp
+	0,  // 4: BatchAbnuserResp.code:type_name -> Code
+	13, // 5: GetUserInfoResp.list:type_name -> UserSocialInfo
+	13, // 6: GetUserInfoDidResp.list:type_name -> UserSocialInfo
+	8,  // 7: ArchiveInner.DisAbnormal:input_type -> DisAbnormalReq
+	9,  // 8: ArchiveInner.WebDestroy:input_type -> WebDestroyReq
+	10, // 9: ArchiveInner.BatchAbnuser:input_type -> BatchAbnuserReq
+	12, // 10: ArchiveInner.GetUserInfo:input_type -> GetUserInfoReq
+	15, // 11: ArchiveInner.GetUserInfoDid:input_type -> GetUserInfoDidReq
+	17, // 12: ArchiveInner.ModifyArchive:input_type -> ModifyArchiveReq
+	18, // 13: ArchiveInner.GetUserInfoByKey:input_type -> GetUserInfoByKeyReq
+	5,  // 14: ArchiveInner.QueryIPForbidUser:input_type -> QueryIPForbidUserReq
+	4,  // 15: ArchiveInner.ClearArchive:input_type -> ClearArchiveReq
+	3,  // 16: ArchiveInner.DeleteArchive:input_type -> DeleteArchiveReq
+	1,  // 17: ArchiveInner.DisAbnormal:output_type -> Empty
+	1,  // 18: ArchiveInner.WebDestroy:output_type -> Empty
+	11, // 19: ArchiveInner.BatchAbnuser:output_type -> BatchAbnuserResp
+	14, // 20: ArchiveInner.GetUserInfo:output_type -> GetUserInfoResp
+	16, // 21: ArchiveInner.GetUserInfoDid:output_type -> GetUserInfoDidResp
+	1,  // 22: ArchiveInner.ModifyArchive:output_type -> Empty
+	19, // 23: ArchiveInner.GetUserInfoByKey:output_type -> GetUserInfoByKeyResp
+	6,  // 24: ArchiveInner.QueryIPForbidUser:output_type -> QueryIPForbidUserResp
+	1,  // 25: ArchiveInner.ClearArchive:output_type -> Empty
+	1,  // 26: ArchiveInner.DeleteArchive:output_type -> Empty
+	17, // [17:27] is the sub-list for method output_type
+	7,  // [7:17] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_archiveInner_proto_init() }
@@ -1170,7 +1337,7 @@ func file_archiveInner_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_archiveInner_proto_rawDesc), len(file_archiveInner_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   16,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

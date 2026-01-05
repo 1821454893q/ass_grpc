@@ -220,3 +220,37 @@ func (a *ASSGrpcClient) ArchiveIpForbid(bid, uid string) (*QueryIPForbidUserResp
 	}
 	return resp, nil
 }
+
+func (a *ASSGrpcClient) ClearArchive(bid, uid string, aid int) error {
+	if bid == "" || uid == "" || aid < 0 || aid > 9 {
+		return errors.New("param errors")
+	}
+	_, err := a.grpc.ClearArchive(ctx, &ClearArchiveReq{
+		UserInfo: &BaseInfo{
+			Bid: bid,
+			Uid: uid,
+			Aid: int32(aid),
+		},
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *ASSGrpcClient) DeleteArchive(bid, uid string, aid int) error {
+	if bid == "" || uid == "" || aid < 0 || aid > 9 {
+		return errors.New("param errors")
+	}
+	_, err := a.grpc.DeleteArchive(ctx, &DeleteArchiveReq{
+		UserInfo: &BaseInfo{
+			Bid: bid,
+			Uid: uid,
+			Aid: int32(aid),
+		},
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
